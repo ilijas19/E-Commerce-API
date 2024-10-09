@@ -3,7 +3,7 @@ info:
   title: 10-E-Commerce
   version: 1.0.0
 servers:
-  - url: http://localhost:5000/api/v1
+  - url: https://e-commerce-api-m52i.onrender.com/api/v1
 tags:
   - name: Auth
   - name: Users
