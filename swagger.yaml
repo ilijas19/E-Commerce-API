@@ -1,0 +1,380 @@
+openapi: 3.0.0
+info:
+  title: 10-E-Commerce
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000/api/v1
+tags:
+  - name: Auth
+  - name: Users
+  - name: Product
+  - name: Review
+  - name: Order
+paths:
+  /auth/logout:
+    get:
+      tags:
+        - Auth
+      summary: Logout User
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: susan
+                email: susan@gmail.com
+                password: secret
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: ilija@gmail.com
+                password: secret
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /users:
+    get:
+      tags:
+        - Users
+      summary: Get All Users
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /users/66ffe6bacdde37bbe938c9eb:
+    get:
+      tags:
+        - Users
+      summary: Get Single User
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /users/showMe:
+    get:
+      tags:
+        - Users
+      summary: Show Current User
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /users/updateUser:
+    patch:
+      tags:
+        - Users
+      summary: Update User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: george
+                email: george@gmail.com
+                password: secret
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /users/updateUserPassword:
+    patch:
+      tags:
+        - Users
+      summary: Update User Password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                currentPassword: 1secret
+                newPassword: secret
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /products:
+    get:
+      tags:
+        - Product
+      summary: Get All Products
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Product
+      summary: Create Product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: accent chair 2.0
+                price: 30999
+                image: >-
+                  https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+                colors:
+                  - "#ff0000"
+                  - "#00ff00"
+                  - "#0000ff"
+                company: marcos
+                description: >-
+                  Cloud bread VHS hell of banjo bicycle rights jianbing umami
+                  mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr
+                  dreamcatcher waistcoat, authentic chillwave trust fund. Viral
+                  typewriter fingerstache pinterest pork belly narwhal. Schlitz
+                  venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki
+                  trust fund hashtag kinfolk microdosing gochujang live-edge
+                category: office
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /products/6705565ec9182b9e2c39fcba:
+    get:
+      tags:
+        - Product
+      summary: Get Single Product
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /products/67029cf72f5b6a66517bab08:
+    patch:
+      tags:
+        - Product
+      summary: Update Product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                price: "10001"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /products/6702a0d1ff1000c778676c5a:
+    delete:
+      tags:
+        - Product
+      summary: Delete Product
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /products/uploadImage:
+    post:
+      tags:
+        - Product
+      summary: Upload Image
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /products/6701199a902cb8e77d124cef/reviews:
+    get:
+      tags:
+        - Product
+      summary: Get Single Product Reviews
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /reviews:
+    get:
+      tags:
+        - Review
+      summary: Get All Reviews
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Review
+      summary: Create Review
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                product: 67029d8e3ddc42464a1b2b8c
+                rating: 1
+                title: bad product!
+                comment: very very bad product
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /reviews/6703c6048b8e78a5fbbb9075:
+    get:
+      tags:
+        - Review
+      summary: Get Single Review
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /reviews/6703e32024e70ec77122c355:
+    patch:
+      tags:
+        - Review
+      summary: Update Review
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                comment: Very good product!
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /reviews/6703c6b70b98e5bebb4f0eee:
+    delete:
+      tags:
+        - Review
+      summary: Delete Review
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /orders:
+    post:
+      tags:
+        - Order
+      summary: Create Order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                tax: 499
+                shippingFee: 799
+                items:
+                  - product: 67029cf72f5b6a66517bab08
+                    amount: 3
+                  - product: 67029d8e3ddc42464a1b2b8c
+                    amount: 2
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Order
+      summary: Get All Orders
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /orders/670694526ccc8f90d42223c4:
+    get:
+      tags:
+        - Order
+      summary: Get Single Order
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Order
+      summary: Cancel Order
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /orders/6705287cd4703fd23e524a82:
+    patch:
+      tags:
+        - Order
+      summary: Update Order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                id: 670694526ccc8f90d42223c4
+                status: paid
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /orders/showAllMyOrders:
+    get:
+      tags:
+        - Order
+      summary: Show Current User Orders
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
