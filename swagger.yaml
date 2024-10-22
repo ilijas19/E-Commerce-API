@@ -10,7 +10,6 @@ tags:
   - name: Product
   - name: Review
   - name: Order
-  - name: Comments
 paths:
   /auth/logout:
     get:
@@ -410,89 +409,6 @@ paths:
           in: path
           required: true
           description: The ID of the order to delete
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json: {}
-  /comments:
-    get:
-      tags:
-        - Comments
-      summary: Get All Comments
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json: {}
-    post:
-      tags:
-        - Comments
-      summary: Create Comment
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                product: 67029d8e3ddc42464a1b2b8c
-                text: This is a comment!
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json: {}
-  /comments/{id}:
-    get:
-      tags:
-        - Comments
-      summary: Get Single Comment
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The ID of the comment to retrieve
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json: {}
-    patch:
-      tags:
-        - Comments
-      summary: Update Comment
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The ID of the comment to update
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                text: This is an updated comment!
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - Comments
-      summary: Delete Comment
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The ID of the comment to delete
           schema:
             type: string
       responses:
