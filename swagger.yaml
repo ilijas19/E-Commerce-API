@@ -10,6 +10,7 @@ tags:
   - name: Product
   - name: Review
   - name: Order
+  - name: Comments
 paths:
   /auth/logout:
     get:
@@ -68,11 +69,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /users/66ffe6bacdde37bbe938c9eb:
+  /users/{id}:
     get:
       tags:
         - Users
       summary: Get Single User
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the user to retrieve
+          schema:
+            type: string
       responses:
         "200":
           description: Successful response
@@ -167,21 +175,34 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /products/6705565ec9182b9e2c39fcba:
+  /products/{id}:
     get:
       tags:
         - Product
       summary: Get Single Product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the product to retrieve
+          schema:
+            type: string
       responses:
         "200":
           description: Successful response
           content:
             application/json: {}
-  /products/67029cf72f5b6a66517bab08:
     patch:
       tags:
         - Product
       summary: Update Product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the product to update
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -194,11 +215,17 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /products/6702a0d1ff1000c778676c5a:
     delete:
       tags:
         - Product
       summary: Delete Product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the product to delete
+          schema:
+            type: string
       responses:
         "200":
           description: Successful response
@@ -223,11 +250,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /products/6701199a902cb8e77d124cef/reviews:
+  /products/{id}/reviews:
     get:
       tags:
         - Product
       summary: Get Single Product Reviews
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the product to retrieve reviews for
+          schema:
+            type: string
       responses:
         "200":
           description: Successful response
@@ -262,21 +296,34 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /reviews/6703c6048b8e78a5fbbb9075:
+  /reviews/{id}:
     get:
       tags:
         - Review
       summary: Get Single Review
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the review to retrieve
+          schema:
+            type: string
       responses:
         "200":
           description: Successful response
           content:
             application/json: {}
-  /reviews/6703e32024e70ec77122c355:
     patch:
       tags:
         - Review
       summary: Update Review
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the review to update
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -289,11 +336,17 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /reviews/6703c6b70b98e5bebb4f0eee:
     delete:
       tags:
         - Review
       summary: Delete Review
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the review to delete
+          schema:
+            type: string
       responses:
         "200":
           description: Successful response
@@ -331,11 +384,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /orders/670694526ccc8f90d42223c4:
+  /orders/{id}:
     get:
       tags:
         - Order
       summary: Get Single Order
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the order to retrieve
+          schema:
+            type: string
       responses:
         "200":
           description: Successful response
@@ -344,35 +404,97 @@ paths:
     delete:
       tags:
         - Order
-      summary: Cancel Order
+      summary: Delete Order
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the order to delete
+          schema:
+            type: string
       responses:
         "200":
           description: Successful response
           content:
             application/json: {}
-  /orders/6705287cd4703fd23e524a82:
-    patch:
+  /comments:
+    get:
       tags:
-        - Order
-      summary: Update Order
+        - Comments
+      summary: Get All Comments
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Comments
+      summary: Create Comment
       requestBody:
         content:
           application/json:
             schema:
               type: object
               example:
-                id: 670694526ccc8f90d42223c4
-                status: paid
+                product: 67029d8e3ddc42464a1b2b8c
+                text: This is a comment!
       responses:
         "200":
           description: Successful response
           content:
             application/json: {}
-  /orders/showAllMyOrders:
+  /comments/{id}:
     get:
       tags:
-        - Order
-      summary: Show Current User Orders
+        - Comments
+      summary: Get Single Comment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the comment to retrieve
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    patch:
+      tags:
+        - Comments
+      summary: Update Comment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the comment to update
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                text: This is an updated comment!
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Comments
+      summary: Delete Comment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the comment to delete
+          schema:
+            type: string
       responses:
         "200":
           description: Successful response
